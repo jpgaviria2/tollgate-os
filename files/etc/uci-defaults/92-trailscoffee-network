@@ -1,0 +1,43 @@
+#!/bin/sh
+# Trails Coffee Network Configuration
+# Configure private network to bypass captive portal
+
+# Configure NoDogSplash to allow private network unrestricted access
+if [ -f "/etc/config/nodogsplash" ]; then
+    # Add private network interface to trusted interfaces
+    uci set nodogsplash.@nodogsplash[0].trustedmac='00:00:00:00:00:00'
+    uci add_list nodogsplash.@nodogsplash[0].trusted_interfaces='br-private'
+    uci commit nodogsplash
+fi
+
+# Configure firewall to allow private network full access
+uci add firewall zone
+uci set firewall.@zone[-1].name='private'
+uci set firewall.@zone[-1].network='private'
+uci set firewall.@zone[-1].input='ACCEPT'
+uci set firewall.@zone[-1].output='ACCEPT'
+uci set firewall.@zone[-1].forward='ACCEPT'
+
+# Allow private zone to access internet without restrictions
+uci add firewall forwarding
+uci set firewall.@forwarding[-1].src='private'
+uci set firewall.@forwarding[-1].dest='wan'
+
+uci commit firewall
+
+# Set private network SSID to Trails Coffee branded name
+uci set wireless.private_radio0.ssid='TrailsCoffee-Staff'
+uci set wireless.private_radio1.ssid='TrailsCoffee-Staff'
+uci set wireless.private_radio0.key='trailscoffee2024'
+uci set wireless.private_radio1.key='trailscoffee2024'
+uci commit wireless
+
+# Configure DHCP for private network
+uci set dhcp.private=dhcp
+uci set dhcp.private.interface='private'
+uci set dhcp.private.start='100'
+uci set dhcp.private.limit='50'
+uci set dhcp.private.leasetime='12h'
+uci commit dhcp
+
+exit 0

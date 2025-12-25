@@ -1,0 +1,35 @@
+{
+  "name": "Trails Coffee WiFi Portal",
+  "short_name": "TrailsCoffee",
+  "description": "Welcome to Trails Coffee! Enjoy premium WiFi while sipping your favorite brew. Free access for the first 5 minutes, then pay with ecash.",
+  "start_url": "/",
+  "display": "standalone",
+  "theme_color": "#8B4513",
+  "background_color": "#F5F5DC",
+  "orientation": "portrait-primary",
+  "categories": ["business", "food", "lifestyle"],
+  "lang": "en-US",
+  "dir": "ltr",
+  "icons": [
+    {
+      "src": "/favicon.ico",
+      "sizes": "64x64",
+      "type": "image/x-icon",
+      "purpose": "any maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Visit Trails Coffee Website",
+      "short_name": "Menu & Order",
+      "description": "Check our menu and place an order",
+      "url": "https://trailscoffee.com",
+      "icons": [
+        {
+          "src": "/favicon.ico",
+          "sizes": "64x64"
+        }
+      ]
+    }
+  ]
+}

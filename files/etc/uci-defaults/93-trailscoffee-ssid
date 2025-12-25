@@ -1,0 +1,18 @@
+#!/bin/sh
+# Trails Coffee WiFi Network Configuration
+
+# Set public network SSIDs
+uci set wireless.default_radio0.ssid='TrailsCoffee-Guest'
+uci set wireless.default_radio1.ssid='TrailsCoffee-Guest'
+
+# Set public network to open (no encryption for captive portal)
+uci set wireless.default_radio0.encryption='none'
+uci set wireless.default_radio1.encryption='none'
+
+# Remove any existing keys
+uci set wireless.default_radio0.key=''
+uci set wireless.default_radio1.key=''
+
+uci commit wireless
+
+exit 0

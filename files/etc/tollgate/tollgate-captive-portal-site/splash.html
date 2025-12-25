@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to Trails Coffee</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #8B4513 0%, #D2691E 50%, #F4A460 100%);
+            color: #fff;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 40px;
+            max-width: 500px;
+            width: 100%;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, #8B4513, #D2691E, #F4A460);
+        }
+
+        .logo {
+            font-size: 3em;
+            margin-bottom: 20px;
+            color: #8B4513;
+        }
+
+        h1 {
+            color: #8B4513;
+            margin-bottom: 10px;
+            font-size: 2.2em;
+            font-weight: 700;
+        }
+
+        .subtitle {
+            color: #666;
+            margin-bottom: 30px;
+            font-size: 1.1em;
+            line-height: 1.5;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .feature {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 4px solid #8B4513;
+        }
+
+        .feature-icon {
+            font-size: 2em;
+            margin-bottom: 10px;
+            color: #8B4513;
+        }
+
+        .feature h3 {
+            color: #8B4513;
+            margin-bottom: 8px;
+            font-size: 1.1em;
+        }
+
+        .feature p {
+            color: #666;
+            font-size: 0.9em;
+            line-height: 1.4;
+        }
+
+        .wifi-btn {
+            background: linear-gradient(135deg, #8B4513, #D2691E);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            border-radius: 50px;
+            font-size: 1.2em;
+            font-weight: 600;
+            cursor: pointer;
+            margin: 20px 0;
+            box-shadow: 0 8px 20px rgba(139, 69, 19, 0.3);
+            transition: all 0.3s ease;
+            width: 100%;
+            max-width: 300px;
+        }
+
+        .wifi-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 30px rgba(139, 69, 19, 0.4);
+        }
+
+        .wifi-btn:active {
+            transform: translateY(0);
+        }
+
+        .divider {
+            margin: 20px 0;
+            color: #ccc;
+            position: relative;
+        }
+
+        .divider::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: #eee;
+        }
+
+        .divider span {
+            background: white;
+            padding: 0 15px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .free-access {
+            background: linear-gradient(135deg, #4CAF50, #45a049);
+            color: white;
+            padding: 15px;
+            border-radius: 10px;
+            margin: 20px 0;
+            font-weight: 600;
+        }
+
+        .footer {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+            color: #888;
+            font-size: 0.9em;
+        }
+
+        .footer p {
+            margin: 5px 0;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin: 15px 0;
+        }
+
+        .social-links a {
+            color: #8B4513;
+            font-size: 1.5em;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .social-links a:hover {
+            color: #D2691E;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 30px 20px;
+                margin: 20px;
+            }
+
+            h1 {
+                font-size: 1.8em;
+            }
+
+            .features {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo">☕</div>
+        <h1>Trails Coffee</h1>
+        <p class="subtitle">Premium WiFi Experience</p>
+
+        <div class="free-access">
+            🎉 Free WiFi for the first 5 minutes!
+        </div>
+
+        <div class="features">
+            <div class="feature">
+                <div class="feature-icon">🚀</div>
+                <h3>Lightning Fast</h3>
+                <p>High-speed internet for streaming, work, and browsing</p>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">🔒</div>
+                <h3>Secure & Private</h3>
+                <p>Sovereign digital infrastructure powered by TollGate</p>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">☕</div>
+                <h3>Local Favorite</h3>
+                <p>Supporting your neighborhood coffee destination</p>
+            </div>
+        </div>
+
+        <button class="wifi-btn" onclick="connectToWifi()">
+            Connect to WiFi
+        </button>
+
+        <div class="divider">
+            <span>or</span>
+        </div>
+
+        <p style="color: #666; font-size: 0.9em; margin: 15px 0;">
+            Looking for our menu or ordering? Visit <strong>trailscoffee.com</strong>
+        </p>
+
+        <div class="footer">
+            <div class="social-links">
+                <a href="https://www.facebook.com/trailscoffee" target="_blank">📘</a>
+                <a href="https://www.instagram.com/trailscoffee" target="_blank">📷</a>
+                <a href="https://www.yelp.com/biz/trails-coffee" target="_blank">🍽️</a>
+            </div>
+            <p>🌟 Fresh coffee daily | 📍 Your neighborhood coffee destination</p>
+            <p style="font-size: 0.8em; margin-top: 10px;">
+                Powered by TollGate - Sovereign Digital Infrastructure
+            </p>
+        </div>
+    </div>
+
+    <script>
+        function connectToWifi() {
+            const btn = document.querySelector('.wifi-btn');
+            const originalText = btn.textContent;
+
+            btn.textContent = 'Connecting...';
+            btn.disabled = true;
+            btn.style.background = 'linear-gradient(135deg, #666, #555)';
+
+            // Simulate connection process
+            setTimeout(() => {
+                btn.textContent = 'Getting Tokens...';
+                setTimeout(() => {
+                    btn.textContent = 'Almost Ready...';
+                    setTimeout(() => {
+                        // Redirect to TollGate payment flow or auto-connect
+                        btn.textContent = 'Connected! 🎉';
+                        btn.style.background = 'linear-gradient(135deg, #4CAF50, #45a049)';
+
+                        // Show success message
+                        setTimeout(() => {
+                            alert('🎉 Welcome to Trails Coffee WiFi!\n\nYou have 5 minutes of free access to get started. For continued access, you can pay with ecash through our TollGate system.\n\nEnjoy your coffee and browsing! ☕');
+                        }, 500);
+                    }, 1000);
+                }, 1000);
+            }, 1000);
+        }
+
+        // Add some visual flair
+        document.addEventListener('DOMContentLoaded', function() {
+            const container = document.querySelector('.container');
+            container.style.animation = 'fadeInUp 0.8s ease-out';
+
+            const style = document.createElement('style');
+            style.textContent = `
+                @keyframes fadeInUp {
+                    from {
+                        opacity: 0;
+                        transform: translateY(30px);
+                    }
+                    to {
+                        opacity: 1;
+                        transform: translateY(0);
+                    }
+                }
+            `;
+            document.head.appendChild(style);
+        });
+    </script>
+</body>
+</html>
