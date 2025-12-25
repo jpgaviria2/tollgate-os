@@ -30,6 +30,7 @@ jobs:
     steps:
     - uses: actions/checkout@v4
     - name: Build Firmware
+      id: build-os
       uses: ./actions/build-os
       with:
         device_id: ${{ inputs.device_id }}
@@ -40,3 +41,43 @@ jobs:
         nostr_public_key: ${{ secrets.NOSTR_PUBLIC_KEY }}
         nsec: ${{ secrets.NSEC }}
         nsecbech: ${{ secrets.NSEC_BECH32 }}
+
+    - name: Upload Build Artifacts
+      uses: actions/upload-artifact@v4
+      with:
+        name: tollgate-firmware-${{ inputs.device_id }}
+        path: ${{ steps.build-os.outputs.firmware_path }}
+        retention-days: 30
+
+    - name: Create Build Summary
+      run: |
+        echo "## 🎉 Trails Coffee Firmware Build Complete!" >> $GITHUB_STEP_SUMMARY
+        echo "" >> $GITHUB_STEP_SUMMARY
+        echo "**Device:** ${{ inputs.device_id }}" >> $GITHUB_STEP_SUMMARY
+        echo "**OpenWrt Version:** ${{ inputs.openwrt_version }}" >> $GITHUB_STEP_SUMMARY
+        echo "**TollGate Version:** v0.0.1" >> $GITHUB_STEP_SUMMARY
+        echo "**Release Channel:** ${{ inputs.release_channel }}" >> $GITHUB_STEP_SUMMARY
+        echo "" >> $GITHUB_STEP_SUMMARY
+        echo "### ✅ Customizations Included:" >> $GITHUB_STEP_SUMMARY
+        echo "- 🌐 **Whitelisted domains** for Trails Coffee" >> $GITHUB_STEP_SUMMARY
+        echo "- 🔓 **Unrestricted private network** for staff" >> $GITHUB_STEP_SUMMARY
+        echo "- 🎨 **Custom branded captive portal**" >> $GITHUB_STEP_SUMMARY
+        echo "- 📶 **Trails Coffee SSID names**" >> $GITHUB_STEP_SUMMARY
+        echo "- 🏷️ **Branded system banner**" >> $GITHUB_STEP_SUMMARY
+        echo "" >> $GITHUB_STEP_SUMMARY
+        echo "### 📦 Download Your Firmware:" >> $GITHUB_STEP_SUMMARY
+        echo "1. **From Artifacts**: Click the 'Artifacts' section below" >> $GITHUB_STEP_SUMMARY
+        echo "2. **Download**: \`tollgate-firmware-${{ inputs.device_id }}.zip\`" >> $GITHUB_STEP_SUMMARY
+        echo "3. **Extract**: The .bin file from the ZIP" >> $GITHUB_STEP_SUMMARY
+        echo "" >> $GITHUB_STEP_SUMMARY
+        echo "### 🚀 Flash to Your Router:" >> $GITHUB_STEP_SUMMARY
+        echo "**Option A - Use the flash script:**" >> $GITHUB_STEP_SUMMARY
+        echo "\`\`\`bash" >> $GITHUB_STEP_SUMMARY
+        echo "scp firmware.bin root@192.168.1.1:/tmp/" >> $GITHUB_STEP_SUMMARY
+        echo "ssh root@192.168.1.1 'sysupgrade -n /tmp/firmware.bin'" >> $GITHUB_STEP_SUMMARY
+        echo "\`\`\`" >> $GITHUB_STEP_SUMMARY
+        echo "" >> $GITHUB_STEP_SUMMARY
+        echo "**Option B - Via LuCI web interface:**" >> $GITHUB_STEP_SUMMARY
+        echo "1. Connect to router at http://192.168.1.1:8080" >> $GITHUB_STEP_SUMMARY
+        echo "2. Go to System → Backup/Flash Firmware" >> $GITHUB_STEP_SUMMARY
+        echo "3. Upload and flash the .bin file" >> $GITHUB_STEP_SUMMARY
