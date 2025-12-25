@@ -1,2 +1,28 @@
 .DS_Store
 .idea
+
+# Environment files with secrets
+.env
+.env.local
+.env.*
+local-build.env
+*.env
+
+# Build artifacts
+firmware/
+build/
+output/
+*.bin
+*.img
+
+# Temporary build directories
+/tmp/tollgate-*
+/tmp/openwrt-*
+
+# Node modules (if any)
+node_modules/
+package-lock.json
+
+# Logs
+*.log
+build.log
